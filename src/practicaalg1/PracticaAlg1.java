@@ -130,8 +130,9 @@ public class PracticaAlg1 extends JFrame {
                     //actualizar lista curso con la asignatura cambiada
                     listacurs.actualiza(asignatura, estu);
 
-                    System.out.print(me.getStringasig());
-                    System.out.print(me.getEstu());
+                    System.out.println(me.getStringasig());
+                    System.out.println(me.getEstu());
+                    System.out.print(me.getestu().getEstudiant_Asignatura().Mostrar_Lista());
                 }
             }
 
@@ -153,7 +154,7 @@ public class PracticaAlg1 extends JFrame {
         botones[4].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                viewer.setText("hola");
+                
             }
         });
 
@@ -168,7 +169,7 @@ public class PracticaAlg1 extends JFrame {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 viewer.setText(listacurs.toString());
-
+            
             }
         });
 

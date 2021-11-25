@@ -167,7 +167,7 @@ public class AltaCurso extends JDialog implements ActionListener{
                 n=validaInt(num_asig.getText());
                 
                for(int i=0;i<n;i++){ 
-                    VentanaAsignatura vasig=new VentanaAsignatura(listaasig);
+                    VentanaAsignatura vasig=new VentanaAsignatura();
                     vasig.setVisible(true);
                     listaasig.addObject(vasig.getAsig());
                     
@@ -183,12 +183,12 @@ public class AltaCurso extends JDialog implements ActionListener{
                     case "Bachiller":
                         curs=new Batxiller(listaasig,codi1,nom1,any);
                         l.addObject(curs);
-//                         System.out.print(curs);
+
                         break;
                     case "FP":
                         curs=new FP(listaasig,codi1,nom1,tipofp);
                         l.addObject(curs);
-//                         System.out.print(curs);
+
                         break;
                 }
                 cerrarVentana();

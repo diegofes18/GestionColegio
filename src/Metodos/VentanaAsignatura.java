@@ -34,12 +34,12 @@ public class VentanaAsignatura extends JDialog {
     private JButton boton;
     private boolean acepted;
     private AltaCurso ac;
-    private ListaAsignaturas l,listaasig;
+    private ListaAsignaturas l;
     private Asignatura_Estudiant ase;
     
-    public VentanaAsignatura(ListaAsignaturas la){
+    public VentanaAsignatura(){
         ase=new Asignatura_Estudiant();
-        l=la;
+       
         
         acepted=false;
         this.setModal(true);
@@ -132,8 +132,7 @@ public class VentanaAsignatura extends JDialog {
         boton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                String s = (String) combo.getSelectedItem();//get the selected item
-//                ac=new AltaCurso();
+                String s = (String) combo.getSelectedItem();
                 switch (s) {
                     case "Optativa":
                             perfil = null;
@@ -143,15 +142,13 @@ public class VentanaAsignatura extends JDialog {
                                 perfil=perfil.practic;
                             }
                          
-                         Asignatura as=new Optativa(perfil,validaInt(codi.getText()),ase,nom.getText());
-                         l.addObject(as);
+                        asig=new Optativa(perfil,validaInt(codi.getText()),ase,nom.getText());
                          
                          break;
                          
                     case "Obligatoria":
-                        Asignatura asi=new Obligatoria(validaInt(credit.getText()),validaInt(codi.getText()),ase,nom.getText());
-                        l.addObject(asi);
-                        
+                        asig=new Obligatoria(validaInt(credit.getText()),validaInt(codi.getText()),ase,nom.getText());
+                       
                         break;
 
                 }
@@ -169,6 +166,7 @@ public class VentanaAsignatura extends JDialog {
     public boolean acepted(){
         return acepted;
     }
+    
     
     public void setAsig(Asignatura a){
         asig =a;

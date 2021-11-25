@@ -38,22 +38,26 @@ public class Estudiant_Asignatura {
         }
     }
     
-    public void Mostrar_Lista(){
-        
+   public String Mostrar_Lista(){
+
+        String s="";
         Nodo aux = primer;
-        
+
         if (!aux.isEmpty()){
-            System.out.println(aux.Get_Object().toString());
-            
+            s+=aux.Get_Object().toString();
+
             while(aux.Get_Nodo() != null){
                 aux = aux.Get_Nodo();
-                System.out.println(aux.Get_Object().toString());
-                
+                s+=(aux.Get_Object()).toString();
+                return s;
             }
         }
-        else
-        System.out.println("Llista buida");
-        
+        else{
+            return "Llista buida";
+
+    }
+        return s;
+
     }
     
     public void Remove(Object o) {
