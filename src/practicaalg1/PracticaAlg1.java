@@ -89,12 +89,7 @@ public class PracticaAlg1 extends JFrame{
             public void actionPerformed(ActionEvent ae) {
                 AltaCurso altac=new AltaCurso(listacurs,listaasig);
                 altac.setVisible(true);
-                
-//                if(altac.getdevuelve()==true){
-//                    listacurs.addObject(altac.getCurs());
-//                }
-//                System.out.print(altac.getCurs().toString());
-//                System.out.println(listacurs.toString());
+
             }
          });
         
