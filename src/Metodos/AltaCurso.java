@@ -21,7 +21,7 @@ import java.awt.event.ActionListener;
  *
  * @author berme
  */
-public class AltaCurso extends JFrame implements ActionListener{
+public class AltaCurso extends JDialog implements ActionListener{
    
     private JComboBox combo,combo2;
     private JTextField num_asig,codi,nom;
@@ -38,10 +38,11 @@ public class AltaCurso extends JFrame implements ActionListener{
     private ListaCurso l;
 //    private boolean devuelve;
     
-    public AltaCurso(ListaCurso lc,ListaAsignaturas la){
+    public AltaCurso(ListaCurso lc){
         l=lc;
         listaasig=new ListaAsignaturas();
-        this.la=la;
+        
+        this.setModal(true);
         initcomponents();
         this.add(combo);
         this.add(num_asig);
@@ -166,9 +167,9 @@ public class AltaCurso extends JFrame implements ActionListener{
                 n=validaInt(num_asig.getText());
                 
                for(int i=0;i<n;i++){ 
-                    VentanaAsignatura vasig=new VentanaAsignatura(listaasig,la);
+                    VentanaAsignatura vasig=new VentanaAsignatura(listaasig);
                     vasig.setVisible(true);
-
+                    listaasig.addObject(vasig.getAsig());
                     
                 } 
             }
@@ -200,6 +201,9 @@ public class AltaCurso extends JFrame implements ActionListener{
     }
     public Curs getCurs(){
         return curs;
+    }
+    public ListaCurso getlistacurs(){
+        return l;
     }
 
     public int validaInt(String number){

@@ -15,6 +15,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -23,7 +24,7 @@ import javax.swing.JTextField;
  *
  * @author marcc
  */
-public class VentanaAsignatura extends JFrame {
+public class VentanaAsignatura extends JDialog {
     
     private JComboBox combo,combo2;
     private JTextField nom,codi,credit;
@@ -36,11 +37,12 @@ public class VentanaAsignatura extends JFrame {
     private ListaAsignaturas l,listaasig;
     private Asignatura_Estudiant ase;
     
-    public VentanaAsignatura(ListaAsignaturas la,ListaAsignaturas listaasignaturas){
+    public VentanaAsignatura(ListaAsignaturas la){
         ase=new Asignatura_Estudiant();
         l=la;
-        listaasig=listaasignaturas;
+        
         acepted=false;
+        this.setModal(true);
         initcomponents();
         this.add(combo);
         this.add(combo2);
@@ -142,22 +144,18 @@ public class VentanaAsignatura extends JFrame {
                             }
                          
                          Asignatura as=new Optativa(perfil,validaInt(codi.getText()),ase,nom.getText());
-//                         ac.addAsignatura(getAsig());
                          l.addObject(as);
-                         listaasig.addObject(as);
+                         
                          break;
                          
                     case "Obligatoria":
                         Asignatura asi=new Obligatoria(validaInt(credit.getText()),validaInt(codi.getText()),ase,nom.getText());
-//                        ac.addAsignatura(getAsig());
                         l.addObject(asi);
-                        listaasig.addObject(asi);
+                        
                         break;
 
                 }
-//                acepted=true;
-//                System.out.println(ac.getLista());
-//                System.out.println(getAsig());
+
                 cerrarVentana();
                 
             }
@@ -167,15 +165,7 @@ public class VentanaAsignatura extends JFrame {
         
     
     } 
-    
-//    public static void main(String []args){
-//        VentanaAsignatura v=new VentanaAsignatura(); 
-//        v.setVisible(true);
-//        
-//        
-//    }
-    
-    
+
     public boolean acepted(){
         return acepted;
     }

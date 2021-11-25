@@ -13,10 +13,12 @@ import Listas.ListaCurso;
 import Listas.ListaEstudiante;
 import Listas_ref.Asignatura_Estudiant;
 import Listas_ref.Estudiant_Asignatura;
+import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -25,7 +27,7 @@ import javax.swing.JTextField;
  *
  * @author berme
  */
-public class MatricularEstudiante_1 extends JFrame implements ActionListener{
+public class MatricularEstudiante_1 extends JDialog implements ActionListener{
     
     private JTextField intr_dni, intr_nom, intr_asig;
     private JLabel l1,l2,l3;
@@ -37,12 +39,12 @@ public class MatricularEstudiante_1 extends JFrame implements ActionListener{
     private Asignatura asignatura;
     private boolean acepted ;
     
-    public MatricularEstudiante_1(ListaCurso lc,ListaEstudiante le){
+    public MatricularEstudiante_1(){
         
-        listaest=le;
-        listacurs=lc;
+//        listaest=le;
+//        listacurs=lc;
         acepted=false;
-        
+        this.setModal(true);
         initcomponents();
         this.add(intr_dni);
         this.add(intr_nom);
@@ -89,53 +91,78 @@ public class MatricularEstudiante_1 extends JFrame implements ActionListener{
         intr_nom.setBounds(160,20,200,30);
         intr_dni.setBounds(160,120,200,30);
         intr_asig.setBounds(160,220,200,30);
+        matricular.addActionListener(this);
+         
         
-        matricular.addActionListener(new ActionListener(){
-            
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                acepted=true;
+//        matricular.addActionListener(new ActionListener(){
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                acepted=true;
+//                dni = intr_dni.getText(); 
+//                nom = intr_nom.getText(); 
+//                asig = intr_asig.getText (); 
+//                estu=new Estudiant(nom,dni);   
+                
+//                if (listaest.perteneceObj(estu)){
+//                    
+//                    System.out.print("ya existe");
+//                    asignatura=listacurs.search(asig);
+//                    estu=asignatura.getAsignatura_Estudiant().getEstudiant(estu.getDNI());
+//                    estu.addasig(asignatura);
+//                    asignatura.addestu(estu);
+//                    listacurs.actualiza(asignatura,estu);
+//                    estu.getEstudiant_Asignatura().Mostrar_Lista();
+//                    
+//                    
+//                } else {
+//                    //crear estudiante y añadir a la lista
+//                    estu=new Estudiant(nom,dni);
+//                    estu.setListaasig(new Estudiant_Asignatura());
+//                    listaest.addestu(estu);
+//                    //coger asignatura de lista curso
+//                    asignatura=listacurs.search(asig);
+//                    //añadir estudiante a asignatura
+//                    asignatura.addestu(estu);
+//                    //añadir asignatura a lista asignatura del estudiante
+//                    estu.addasig(asignatura);
+//                    //actualizar lista curso con la asignatura cambiada
+//                    listacurs.actualiza(asignatura,estu);
+                    
+//              }
+//                System.out.println(estu);
+//                dispose();
+//            }
+//            
+//        });
+    }
+    @Override
+         public void actionPerformed(ActionEvent e) {
+              // TODO Auto-generated method stub
+              Object object = e.getSource();
+
+              if (object.equals(matricular)) {
+                asig = intr_asig.getText();
                 dni = intr_dni.getText(); 
                 nom = intr_nom.getText(); 
-                asig = intr_asig.getText (); 
-                estu=new Estudiant(nom,dni);   
-                
-                if (listaest.perteneceObj(estu)){
-                    
-                    System.out.print("ya existe");
-                    asignatura=listacurs.search(asig);
-                    estu=asignatura.getAsignatura_Estudiant().getEstudiant(estu.getDNI());
-                    estu.addasig(asignatura);
-                    asignatura.addestu(estu);
-                    listacurs.actualiza(asignatura,estu);
-                    estu.getEstudiant_Asignatura().Mostrar_Lista();
-                    
-                    
-                } else {
-                    //crear estudiante y añadir a la lista
-                    estu=new Estudiant(nom,dni);
-                    estu.setListaasig(new Estudiant_Asignatura());
-                    listaest.addestu(estu);
-                    //coger asignatura de lista curso
-                    asignatura=listacurs.search(asig);
-                    //añadir estudiante a asignatura
-                    asignatura.addestu(estu);
-                    //añadir asignatura a lista asignatura del estudiante
-                    estu.addasig(asignatura);
-                    //actualizar lista curso con la asignatura cambiada
-                    listacurs.actualiza(asignatura,estu);
-                    
-                }
-                System.out.println(estu);
-                
-            }
-            
-        });
-    }
+                estu=new Estudiant(nom,dni);
+               }
+              dispose();
+   }
     
     //Getters
     public String getDNI(){
         return dni;
+    }
+    public String getStringasig(){
+        
+        return asig;
+    }
+    public Estudiant getestu(){
+        return estu;
+    }
+            
+    public Estudiant getEstu(){
+        return estu;
     }
     public JButton getaceptar(){
         return matricular;
@@ -158,10 +185,7 @@ public class MatricularEstudiante_1 extends JFrame implements ActionListener{
     }
     
 
-    @Override
-    public void actionPerformed(ActionEvent ae) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
     
 //        public static void main(String []args){
 //        MatricularEstudiante_1 v=new MatricularEstudiante_1(); 
