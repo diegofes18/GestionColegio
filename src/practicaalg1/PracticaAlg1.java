@@ -103,7 +103,7 @@ public class PracticaAlg1 extends JFrame{
             public void actionPerformed(ActionEvent ae) {
                 MatricularEstudiante_1 me=new MatricularEstudiante_1(listacurs,listaestudiant);
                 me.setVisible(true);
-               //hola gente que tal
+              
             }
          });
         
