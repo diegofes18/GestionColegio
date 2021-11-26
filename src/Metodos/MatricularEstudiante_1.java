@@ -21,6 +21,7 @@ import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
@@ -145,6 +146,7 @@ public class MatricularEstudiante_1 extends JDialog implements ActionListener{
                 dni = intr_dni.getText(); 
                 nom = intr_nom.getText(); 
                 estu=new Estudiant(nom,dni);
+                acepted=true;
                }
               dispose();
    }
@@ -153,6 +155,7 @@ public class MatricularEstudiante_1 extends JDialog implements ActionListener{
     public String getDNI(){
         return dni;
     }
+    
     public String getStringasig(){
         
         return asig;
@@ -183,8 +186,9 @@ public class MatricularEstudiante_1 extends JDialog implements ActionListener{
     public ListaEstudiante getlistaestu(){
         return listaest;
     }
-    
-
+    public void MostrarMensaje(){
+        JOptionPane.showMessageDialog(this, "Es necesario introducir datos en todos los campos");
+    }
     
     
 //        public static void main(String []args){
