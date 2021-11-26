@@ -12,6 +12,7 @@ import Listas.ListaCurso;
 import Listas.ListaEstudiante;
 import Listas_ref.Estudiant_Asignatura;
 import Metodos.AltaCurso;
+import Metodos.BajaCurso;
 import Metodos.MatricularEstudiante_1;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -140,14 +141,28 @@ public class PracticaAlg1 extends JFrame {
         botones[2].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                viewer.setText("hola");
+                BajaCurso bc=new BajaCurso(listacurs,listacurs.getlength());
+                if(listacurs.getlength()==0){
+                    bc.setVisible(false);
+                }else{
+                bc.setVisible(true);
+                }
+//                if(listacurs.getlength()>0){
+//                    bc.setVisible(true);
+//                    for(int i=0;i<listacurs.getlength();i++){
+////                        combo.addItem(lc.get);
+//                    }
+//                }else{
+//                    bc.setVisible(false);
+//                    System.out.print("Dar de alta un curso");
+//                 }   
             }
         });
 
         botones[3].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                viewer.setText("hola");
+                
             }
         });
 

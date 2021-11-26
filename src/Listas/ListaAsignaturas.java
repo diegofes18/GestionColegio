@@ -6,6 +6,7 @@ package Listas;
 
 import java.util.ArrayList;
 import Asignatura.Asignatura;
+import Curso.Curs;
 import java.util.Collections;
 import java.util.Comparator;
  
@@ -94,6 +95,16 @@ public class ListaAsignaturas implements Interficie_lista{
 
     @Override
     public void actualiza(Object x, Object y) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Curs returnCurs(int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Curs getCurs_Nom(String n) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

@@ -3,6 +3,7 @@
 package Listas;
 
 import Asignatura.Asignatura;
+import Curso.Curs;
 import Estudiant.Estudiant;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -84,6 +85,16 @@ public class ListaEstudiante implements Interficie_lista {
 
     @Override
     public void actualiza(Object x, Object y) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Curs returnCurs(int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Curs getCurs_Nom(String n) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

@@ -58,7 +58,12 @@ public class  FP extends Curs {
 
     @Override
     public boolean compare(Curs c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(this.nom==c.getNom()){
+            return true;
+        }else{
+            return false;
+        }
+        
     }
 
     @Override

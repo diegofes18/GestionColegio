@@ -3,6 +3,7 @@
 package Listas;
 
 import Asignatura.Asignatura;
+import Curso.Curs;
 
 /**
  *
@@ -33,8 +34,10 @@ public interface Interficie_lista {
     
     public Object returnObject(Object x);
     
-   
+    public Curs returnCurs(int i);
     
     public void actualiza(Object x,Object y);
+    
+    public Curs getCurs_Nom(String n);
     
 }

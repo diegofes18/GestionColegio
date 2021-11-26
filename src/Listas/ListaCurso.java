@@ -130,6 +130,20 @@ public class ListaCurso implements Interficie_lista{
         }//To change body of generated methods, choose Tools | Templates.
     }
     
+    public Curs returnCurs(int i){
+        return lista.get(i);
+    }
+    
+    public Curs getCurs_Nom(String n){
+        Curs c=null;
+        for(int i =0;i<lista.size();i++){
+            if(lista.get(i).getNom()==n){
+                c=lista.get(i);
+            }
+        }
+        return c;
+    }
+    
     
     
 }
