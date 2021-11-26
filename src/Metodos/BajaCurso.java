@@ -36,7 +36,7 @@ public class BajaCurso extends JDialog implements ActionListener{
         this.add(l1);
         this.add(aceptar);
         this.setResizable(false);
-        this.setSize(480,800);
+        this.setSize(480,480);
         this.setTitle("Donar de baixa un curs");
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         this.setModal(true);
@@ -53,7 +53,7 @@ public class BajaCurso extends JDialog implements ActionListener{
         getContentPane().add(aceptar);
         l1.setBounds(10, 20, 200, 30);
         combo.setBounds(220,20,200,30);
-        aceptar.setBounds(100, 680, 300, 50);
+        aceptar.setBounds(100, 280, 300, 50);
         
         
         

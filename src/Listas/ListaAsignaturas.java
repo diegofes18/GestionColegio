@@ -75,6 +75,7 @@ public class ListaAsignaturas implements Interficie_lista{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    @Override
     public String getInfoName(int i){
         String info;
         info=lista.get(i).getName();
@@ -106,6 +107,15 @@ public class ListaAsignaturas implements Interficie_lista{
     @Override
     public Curs getCurs_Nom(String n) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    public Asignatura getAsig_Nom(String n){
+        Asignatura c=null;
+        for(int i =0;i<lista.size();i++){
+            if(lista.get(i).getName().equals(n)){
+                c=lista.get(i);
+            }
+        }
+        return c;
     }
     
 }

@@ -100,18 +100,14 @@ public class ListaCurso implements Interficie_lista{
         }
         return null;
     }
-
-//    @Override
-//    public boolean existObject(Object x) {
-//        for(int i=0;i<lista.size();i++){
-//             for(int j=0;j<lista.get(i).asigsize();j++){
-//                 if(lista.get(i).getAsignaturalist(j).estupertenece((Estudiant)x)){
-//                     return true;
-//                 }
-//             }
-//        }
-//        return false;
-//    }
+    public void deleteasig(Asignatura a){
+        for(int i=0;i<lista.size();i++){
+             if(lista.get(i).pertenece(a)){
+                 
+                 lista.get(i).removeasig(a);
+            }
+        }
+    }
 
     @Override
     public Object returnObject(Object x) {

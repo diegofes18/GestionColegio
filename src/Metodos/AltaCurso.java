@@ -38,10 +38,10 @@ public class AltaCurso extends JDialog implements ActionListener{
     private ListaCurso l;
 //    private boolean devuelve;
     
-    public AltaCurso(ListaCurso lc){
+    public AltaCurso(ListaCurso lc,ListaAsignaturas la){
         l=lc;
         listaasig=new ListaAsignaturas();
-        
+        this.la=la;
         this.setModal(true);
         initcomponents();
         this.add(combo);
@@ -170,7 +170,7 @@ public class AltaCurso extends JDialog implements ActionListener{
                     VentanaAsignatura vasig=new VentanaAsignatura();
                     vasig.setVisible(true);
                     listaasig.addObject(vasig.getAsig());
-                    
+                    la.addObject(vasig.getAsig());
                 } 
             }
         });
@@ -232,8 +232,8 @@ public class AltaCurso extends JDialog implements ActionListener{
         listaasig.addObject(a);
     }
     
-    public int getLista(){
-        return listaasig.getlength();
+    public ListaAsignaturas getLista(){
+        return la;
     }
     
     private void cerrarVentana() {

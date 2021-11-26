@@ -12,6 +12,7 @@ import Listas.ListaCurso;
 import Listas.ListaEstudiante;
 import Listas_ref.Estudiant_Asignatura;
 import Metodos.AltaCurso;
+import Metodos.BajaAsignaturaCurso;
 import Metodos.BajaCurso;
 import Metodos.MatricularEstudiante_1;
 import java.awt.BorderLayout;
@@ -85,18 +86,29 @@ public class PracticaAlg1 extends JFrame {
         JEditorPane viewer = new JEditorPane();
         viewer.setContentType("text/html");
         viewer.setEditable(false);
+        viewer.setText(
+"<p>&nbsp;</p>\n" +
+"<h1 style=text-align: center; color: #3f7320;>PRACTICA 1:Gestion de Colegio</h1>\n" +
+"\n" +
+"\n" +
+"<h3 style=text-align: center; color: #3f7320;>by Diego Bermejo, Marc Ca&ntilde;ellas y Victor Canelo</p>\n" +
+"<h3 style=text-align: center; color: #3f7320;>😁</h3>\n" +
+ "<p><br /><strong></strong></p>");
+        
         JScrollPane scrollPane = new JScrollPane(viewer);
         scrollPane.setBounds(50, 50, 300, 300);
         contenedor.add(scrollPane, BorderLayout.CENTER);
-
+       
         //acciones
         botones[0].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                AltaCurso altac = new AltaCurso(listacurs);
+                AltaCurso altac = new AltaCurso(listacurs,listaasig);
                 altac.setVisible(true);
                 listacurs = altac.getlistacurs();
-
+                listaasig=altac.getLista();
+                listacurs.ordena();
+                listaasig.ordena();
             }
         });
 
@@ -115,6 +127,7 @@ public class PracticaAlg1 extends JFrame {
                     estu.addasig(asignatura);
                     asignatura.addestu(estu);
                     listacurs.actualiza(asignatura, estu);
+                    listacurs.ordena();
                     estu.getEstudiant_Asignatura().Mostrar_Lista();
 
                 } else {
@@ -130,7 +143,8 @@ public class PracticaAlg1 extends JFrame {
                     estu.addasig(asignatura);
                     //actualizar lista curso con la asignatura cambiada
                     listacurs.actualiza(asignatura, estu);
-
+                    listacurs.ordena();
+                    listaestudiant.ordena();
                     System.out.println(me.getStringasig());
                     System.out.println(me.getEstu());
                     System.out.print(me.getestu().getEstudiant_Asignatura().Mostrar_Lista());
@@ -154,19 +168,20 @@ public class PracticaAlg1 extends JFrame {
         botones[3].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                
+                BajaAsignaturaCurso bc=new BajaAsignaturaCurso(listacurs,listaasig);
+                if(listaasig.getlength()==0){
+                    bc.setVisible(false);
+                    bc.MostrarMensaje();
+                }else{
+                bc.setVisible(true);
+                }
             }
         });
 
         botones[4].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-//                if(listacurs.getlength()==0){
-//                    viewer.setText("No hay cursos");
-//                }else{
-//                    viewer.setText(listacurs.toString());
-//                    
-//                }
+                  viewer.setText(listaasig.toString());
             }
         });
 

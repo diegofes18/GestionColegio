@@ -68,6 +68,14 @@ public class ListaEstudiante implements Interficie_lista {
     public Object returnObject(Object x) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+     public String toString(){
+        String s="";
+        for(int i=0;i<lista.size();i++){
+                s+=lista.get(i).toString()+"\n";
+        }
+        
+        return s;
+    }
 
     public boolean perteneceObj(Estudiant x) {
         for(int i=0;i<lista.size();i++){
