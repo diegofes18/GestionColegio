@@ -20,6 +20,8 @@ public interface Interficie_lista {
     //elimina un objeto de la lista
     public void deleteObject(Object t);
     
+    public void deleteasig(Asignatura a);
+    
     //ordena la lista
     public void ordena();
     

@@ -85,10 +85,6 @@ public class BajaCurso extends JDialog implements ActionListener{
             try{
                 //Se recorre con un for la lista de conductores
                 for(int i = 0; i<numCursos; i++){
-                    /**Se le da el valor sacado desde el Array listarConductores
-                     * a la variable nombre, la cual recibe la variable nombre
-                     * almacenada en el array y se rellena el combobox
-                     */
                     nombre = lc.returnCurs(i).getNom();
                     //Se arega un nuevo ítem al combobox
                     combo.addItem(nombre);
@@ -97,11 +93,6 @@ public class BajaCurso extends JDialog implements ActionListener{
                 JOptionPane.showMessageDialog(null,"Error al cargar ComboBox" + e);
             }
         }
-    
-//    public static void main (String[]args){
-//        BajaCurso b= new BajaCurso();
-//        b.setVisible(true);
-//    }
     
     public void MostrarMensaje(){
         JOptionPane.showMessageDialog(this, "No hay cursos dados de alta");

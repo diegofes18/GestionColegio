@@ -5,6 +5,7 @@
  */
 package Metodos;
 
+import Curso.Curs;
 import Listas.ListaAsignaturas;
 import Listas.ListaCurso;
 import java.awt.event.ActionEvent;
@@ -22,7 +23,7 @@ import javax.swing.JOptionPane;
  */
 public class BajaAsignaturaCurso extends JDialog implements ActionListener{
 
-    private JComboBox combo,comboasig;
+    private JComboBox combo,combo2;
     private JLabel l1,laasig;
     private JButton aceptar;
     private ListaCurso lc;
@@ -38,6 +39,7 @@ public class BajaAsignaturaCurso extends JDialog implements ActionListener{
         initcomponents();
         rellenarCombo(combo);
         this.add(combo);
+        this.add(combo2);
         this.add(l1);
         this.add(aceptar);
         this.setResizable(false);
@@ -49,7 +51,7 @@ public class BajaAsignaturaCurso extends JDialog implements ActionListener{
     
     private void initcomponents(){
         combo = new JComboBox();
-        comboasig=new JComboBox();
+        combo2=new JComboBox();
         aceptar=new JButton();
         l1=new JLabel();
         laasig=new JLabel();
@@ -59,22 +61,37 @@ public class BajaAsignaturaCurso extends JDialog implements ActionListener{
         aceptar.setText("ACEPTAR");
         getContentPane().add(l1);
         getContentPane().add(laasig);
-        getContentPane().add(comboasig);
+        getContentPane().add(combo2);
         getContentPane().add(aceptar);
         l1.setBounds(10, 20, 200, 30);
         combo.setBounds(220,20,200,30);
         laasig.setBounds(10, 100, 200, 30);
-        comboasig.setBounds(220,100,200,30);
+        combo2.setBounds(220,100,200,30);
         aceptar.setBounds(100, 380, 300, 50);
         
-        
+        combo.addActionListener(new ActionListener() {//add actionlistner to listen for change
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String s = (String) combo.getSelectedItem();//get the selected item
+
+                for(int i=0;i<lc.getlength();i++){
+                    if(lc.returnCurs(i).getNom()==s){
+                        rellenarCombo2(combo2,lc.returnCurs(i));
+                    }
+                }
+            }
+
+            
+        });
       
         aceptar.addActionListener(new ActionListener() {//add actionlistner to listen for change
             @Override
             public void actionPerformed(ActionEvent e) {
-                String deleted=comboasig.getSelectedItem().toString();
-                la.deleteObject(la.getAsig_Nom(deleted));
+                String deleted=combo2.getSelectedItem().toString();
                 lc.deleteasig(la.getAsig_Nom(deleted));
+                la.deleteObject(la.getAsig_Nom(deleted));
+                
                 System.out.println("ASIGNATURA DADA DE BAJA: "+deleted);
                 cerrarVentana();
                
@@ -95,12 +112,31 @@ public class BajaAsignaturaCurso extends JDialog implements ActionListener{
             combo.removeAllItems();//limpia el combobox
             //try por si fallara al momento de rellenar
             try{
-                //Se recorre con un for la lista de conductores
+                //Se recorre con un for la lista
                 for(int i = 0; i<numCursos; i++){
                    
                     nombre = lc.returnCurs(i).getNom();
                     //Se arega un nuevo ítem al combobox
                     combo.addItem(nombre);
+                }
+            }catch(Exception e){ //capta el error y lo muestra
+                JOptionPane.showMessageDialog(null,"Error al cargar ComboBox" + e);
+            }
+        }
+    
+    public void rellenarCombo2(JComboBox c,Curs cu){
+            //variable para tomar el nombre
+            String nombre;
+            //se limpia el combo
+            combo2.removeAllItems();//limpia el combobox
+            //try por si fallara al momento de rellenar
+            try{
+                //Se recorre con un for la lista
+                for(int i = 0; i<cu.asigsize(); i++){
+                   
+                    nombre = cu.getNameAsignaturalist(i);
+                    //Se arega un nuevo ítem al combobox
+                    combo2.addItem(nombre);
                 }
             }catch(Exception e){ //capta el error y lo muestra
                 JOptionPane.showMessageDialog(null,"Error al cargar ComboBox" + e);

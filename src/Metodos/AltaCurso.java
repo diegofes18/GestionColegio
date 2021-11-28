@@ -36,7 +36,6 @@ public class AltaCurso extends JDialog implements ActionListener{
     private Any any;
     private Tipos tipofp;
     private ListaCurso l;
-//    private boolean devuelve;
     
     public AltaCurso(ListaCurso lc,ListaAsignaturas la){
         l=lc;
@@ -110,7 +109,7 @@ public class AltaCurso extends JDialog implements ActionListener{
             public void actionPerformed(ActionEvent e) {
 
                 String s = (String) combo.getSelectedItem();//get the selected item
-
+                
                 switch (s) {//check for a match
                     case "Seleccione Modalidad":
                         break;
@@ -128,7 +127,7 @@ public class AltaCurso extends JDialog implements ActionListener{
                         combo2.addItem("Informatica");
                         System.out.print("FP");
                         break;
-
+                
                 }
             }
         });

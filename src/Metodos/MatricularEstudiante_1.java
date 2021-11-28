@@ -8,16 +8,11 @@ package Metodos;
 import Asignatura.Asignatura;
 
 import Estudiant.Estudiant;
-import Listas.ListaAsignaturas;
 import Listas.ListaCurso;
 import Listas.ListaEstudiante;
-import Listas_ref.Asignatura_Estudiant;
-import Listas_ref.Estudiant_Asignatura;
-import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;

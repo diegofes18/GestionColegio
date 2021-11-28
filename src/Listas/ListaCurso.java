@@ -100,6 +100,7 @@ public class ListaCurso implements Interficie_lista{
         }
         return null;
     }
+    
     public void deleteasig(Asignatura a){
         for(int i=0;i<lista.size();i++){
              if(lista.get(i).pertenece(a)){

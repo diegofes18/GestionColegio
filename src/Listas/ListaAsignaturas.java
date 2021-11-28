@@ -117,5 +117,10 @@ public class ListaAsignaturas implements Interficie_lista{
         }
         return c;
     }
+
+    @Override
+    public void deleteasig(Asignatura a) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
