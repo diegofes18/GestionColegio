@@ -5,7 +5,9 @@
  */
 package Metodos;
 
+import Asignatura.Asignatura;
 import Curso.Curs;
+import Estudiant.Estudiant;
 import Listas.ListaAsignaturas;
 import Listas.ListaCurso;
 import Listas.ListaEstudiante;
@@ -30,14 +32,14 @@ public class BajaAsignaturaCurso extends JDialog implements ActionListener{
     private ListaCurso lc;
     private ListaAsignaturas la;
     private int numCursos;
-    private int numasig;
+    private Asignatura todelete;
     private ListaEstudiante le;
     
     public BajaAsignaturaCurso(ListaCurso listac,ListaAsignaturas la,ListaEstudiante le){
         this.lc=listac;
         this.numCursos=listac.getlength();
         this.la=la;
-        this.numasig=la.getlength();
+        
         this.le=le;
         initcomponents();
         rellenarCombo(combo);
@@ -92,10 +94,11 @@ public class BajaAsignaturaCurso extends JDialog implements ActionListener{
             @Override
             public void actionPerformed(ActionEvent e) {
                 String deleted=combo2.getSelectedItem().toString();
+                todelete=la.getAsig_Nom(deleted);
                 lc.deleteasig(la.getAsig_Nom(deleted));
                 la.deleteObject(la.getAsig_Nom(deleted));
-                for(int i=0;i<la.getAsig_Nom(deleted).getAsignatura_Estudiant().size();i++){
-                    le.deleteObject(la.getAsig_Nom(deleted).geteestu(i));
+                for(int i=0;i<todelete.getAsignatura_Estudiant().size();i++){
+                    le.deleteObject(todelete.geteestu(i));
                 }
                 System.out.println("ASIGNATURA DADA DE BAJA: "+deleted);
                 cerrarVentana();
@@ -109,6 +112,7 @@ public class BajaAsignaturaCurso extends JDialog implements ActionListener{
     private void cerrarVentana() {
         this.dispose();
     }
+    
     
     public void rellenarCombo(JComboBox c){
             //variable para tomar el nombre
