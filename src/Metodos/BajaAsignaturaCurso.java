@@ -8,6 +8,7 @@ package Metodos;
 import Curso.Curs;
 import Listas.ListaAsignaturas;
 import Listas.ListaCurso;
+import Listas.ListaEstudiante;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -30,12 +31,14 @@ public class BajaAsignaturaCurso extends JDialog implements ActionListener{
     private ListaAsignaturas la;
     private int numCursos;
     private int numasig;
+    private ListaEstudiante le;
     
-    public BajaAsignaturaCurso(ListaCurso listac,ListaAsignaturas la){
+    public BajaAsignaturaCurso(ListaCurso listac,ListaAsignaturas la,ListaEstudiante le){
         this.lc=listac;
         this.numCursos=listac.getlength();
         this.la=la;
         this.numasig=la.getlength();
+        this.le=le;
         initcomponents();
         rellenarCombo(combo);
         this.add(combo);
@@ -91,7 +94,9 @@ public class BajaAsignaturaCurso extends JDialog implements ActionListener{
                 String deleted=combo2.getSelectedItem().toString();
                 lc.deleteasig(la.getAsig_Nom(deleted));
                 la.deleteObject(la.getAsig_Nom(deleted));
-                
+                for(int i=0;i<la.getAsig_Nom(deleted).getAsignatura_Estudiant().size();i++){
+                    le.deleteObject(la.getAsig_Nom(deleted).geteestu(i));
+                }
                 System.out.println("ASIGNATURA DADA DE BAJA: "+deleted);
                 cerrarVentana();
                

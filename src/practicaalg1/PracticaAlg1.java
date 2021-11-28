@@ -167,7 +167,7 @@ public class PracticaAlg1 extends JFrame {
         botones[3].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                BajaAsignaturaCurso bc=new BajaAsignaturaCurso(listacurs,listaasig);
+                BajaAsignaturaCurso bc=new BajaAsignaturaCurso(listacurs,listaasig,listaestudiant);
                 if(listaasig.getlength()==0){
                     bc.setVisible(false);
                     bc.MostrarMensaje();

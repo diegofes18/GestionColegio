@@ -40,6 +40,9 @@ public abstract class Asignatura {
     
     public abstract void addestu(Estudiant x);
     
+    public  Estudiant geteestu(int i){
+        return this.listaalumn.getInfo(i);
+    }
     
     
 }
