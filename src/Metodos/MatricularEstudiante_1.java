@@ -8,11 +8,13 @@ package Metodos;
 import Asignatura.Asignatura;
 
 import Estudiant.Estudiant;
+import Listas.ListaAsignaturas;
 import Listas.ListaCurso;
 import Listas.ListaEstudiante;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -25,41 +27,44 @@ import javax.swing.JTextField;
  */
 public class MatricularEstudiante_1 extends JDialog implements ActionListener{
     
-    private JTextField intr_dni, intr_nom, intr_asig;
+    private JTextField intr_dni, intr_nom;
     private JLabel l1,l2,l3;
     private String asig,nom,dni;
     private ListaEstudiante listaest;
     private JButton matricular;
-    private ListaCurso listacurs;
     private Estudiant estu;
-    private Asignatura asignatura;
+    private ListaAsignaturas listaasig;
     private boolean acepted ;
+    private JComboBox combo;
+    private int numasig;
     
-    public MatricularEstudiante_1(){
+    public MatricularEstudiante_1(ListaAsignaturas la, int i){
         
 //        listaest=le;
 //        listacurs=lc;
         acepted=false;
+        listaasig=la;
+        numasig=i;
         this.setModal(true);
         initcomponents();
+        rellenarCombo(combo);
+        this.add(combo);
         this.add(intr_dni);
         this.add(intr_nom);
-        this.add(intr_asig);
         this.add(l1);
         this.add(l2);
         this.add(l3);
         this.add(matricular);
         this.setResizable(false);
-        this.setSize(400,600);
+        this.setSize(400,340);
         this.setTitle("Matricular un estudiant");
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     }
     
     private void initcomponents(){
-        
+        combo=new JComboBox();
         intr_nom=new JTextField();
         intr_dni=new JTextField();
-        intr_asig=new JTextField();
         matricular=new JButton();
         l1=new JLabel();
         l2=new JLabel();
@@ -69,7 +74,7 @@ public class MatricularEstudiante_1 extends JDialog implements ActionListener{
         
         l1.setText("Introduir Nom");
         l2.setText("Introduir DNI");
-        l3.setText("Introduir Asignatura");
+        l3.setText("Seleccionar Asignatura");
         matricular.setText("Matricular Estudiante");
         
         getContentPane().add(l1);
@@ -78,15 +83,15 @@ public class MatricularEstudiante_1 extends JDialog implements ActionListener{
         getContentPane().add(matricular);
         getContentPane().add(intr_dni);
         getContentPane().add(intr_nom);
-        getContentPane().add(intr_asig);
+        getContentPane().add(combo);
         
         l1.setBounds(10, 20, 200, 30);
-        l2.setBounds(10, 120, 200, 30);
-        l3.setBounds(10, 220, 200, 30);
-        matricular.setBounds(10,400,200,30);
+        l2.setBounds(10, 80, 200, 30);
+        l3.setBounds(10, 140, 200, 30);
+        matricular.setBounds(85,220,200,40);
         intr_nom.setBounds(160,20,200,30);
-        intr_dni.setBounds(160,120,200,30);
-        intr_asig.setBounds(160,220,200,30);
+        intr_dni.setBounds(160,80,200,30);
+        combo.setBounds(160, 140, 200, 30);
         matricular.addActionListener(this);
          
         
@@ -137,10 +142,10 @@ public class MatricularEstudiante_1 extends JDialog implements ActionListener{
               Object object = e.getSource();
 
               if (object.equals(matricular)) {
-                asig = intr_asig.getText();
                 dni = intr_dni.getText(); 
                 nom = intr_nom.getText(); 
                 estu=new Estudiant(nom,dni);
+                asig=(String) combo.getSelectedItem();
                 acepted=true;
                }
               dispose();
@@ -186,10 +191,21 @@ public class MatricularEstudiante_1 extends JDialog implements ActionListener{
     }
     
     
-//        public static void main(String []args){
-//        MatricularEstudiante_1 v=new MatricularEstudiante_1(); 
-//        v.setVisible(true);
-//        
-//        
-//    }
+    public void rellenarCombo(JComboBox c){
+            //variable para tomar el nombre
+            String nombre;
+            //se limpia el combo
+            combo.removeAllItems();//limpia el combobox
+            //try por si fallara al momento de rellenar
+            try{
+                //Se recorre con un for la lista de conductores
+                for(int i = 0; i<numasig; i++){
+                    nombre = listaasig.getInfoName(i);
+                    //Se arega un nuevo ítem al combobox
+                    combo.addItem(nombre);
+                }
+            }catch(Exception e){ //capta el error y lo muestra
+                JOptionPane.showMessageDialog(null,"Error al cargar ComboBox" + e);
+            }
+        }
 }

@@ -87,7 +87,7 @@ public class PracticaAlg1 extends JFrame {
         viewer.setEditable(false);
         viewer.setText(
 "<p>&nbsp;</p>\n" +
-"<h1 style=text-align: center; color: #3f7320;>PRACTICA 1:Gestion de Colegio</h1>\n" +
+"<h1 style=text-align: center; color: #3f7320;>PRACTICA 1: Gestion de Colegio</h1>\n" +
 "\n" +
 "\n" +
 "<h3 style=text-align: center; color: #3f7320;>by Diego Bermejo, Marc Ca&ntilde;ellas y Victor Canelo</p>\n" +
@@ -114,7 +114,7 @@ public class PracticaAlg1 extends JFrame {
         botones[1].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                MatricularEstudiante_1 me = new MatricularEstudiante_1();
+                MatricularEstudiante_1 me = new MatricularEstudiante_1(listaasig, listaasig.getlength());
                 me.setVisible(true);
                 Asignatura asignatura;
                 Estudiant estu;

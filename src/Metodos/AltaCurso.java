@@ -54,7 +54,7 @@ public class AltaCurso extends JDialog implements ActionListener{
         this.add(combo2);
         this.add(introasig);
         this.setResizable(false);
-        this.setSize(480,800);
+        this.setSize(480,520);
         this.setTitle("Donar d'alta curs");
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     }
@@ -91,17 +91,17 @@ public class AltaCurso extends JDialog implements ActionListener{
         getContentPane().add(codi);
         getContentPane().add(nom);
         getContentPane().add(aceptar);
-        l2.setBounds(10, 120, 200, 30);
+        l2.setBounds(10, 80, 200, 30);
         l1.setBounds(10, 20, 200, 30);
-        num_asig.setBounds(220,120,200,30);
+        num_asig.setBounds(220,80,200,30);
         combo.setBounds(220,20,200,30);
-        l3.setBounds(10, 220, 200, 30);
-        l4.setBounds(10, 320, 300, 30);
-        nom.setBounds(220,220,200,30);
-        codi.setBounds(220,320,200,30);
-        combo2.setBounds(10,420,200,30);
-        introasig.setBounds(10,520,200,30);
-        aceptar.setBounds(100, 680, 300, 50);
+        l3.setBounds(10, 140, 200, 30);
+        l4.setBounds(10, 200, 300, 30);
+        nom.setBounds(220,140,200,30);
+        codi.setBounds(220,200,200,30);
+        combo2.setBounds(10,260,200,30);
+        introasig.setBounds(10,330,200,30);
+        aceptar.setBounds(85, 410, 300, 40);
         num_asig.setText("0");
         
         combo.addActionListener(new ActionListener() {//add actionlistner to listen for change
