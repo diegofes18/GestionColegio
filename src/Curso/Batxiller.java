@@ -39,7 +39,11 @@ public class Batxiller extends Curs{
     public int getCodi() {
         return codi;
     }
-
+    
+    public ListaAsignaturas getlista(){
+        return asig;
+    }
+    
     @Override
     public void setNom(String name) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

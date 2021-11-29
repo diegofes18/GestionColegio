@@ -7,6 +7,7 @@ package Listas;
 import java.util.ArrayList;
 import Asignatura.Asignatura;
 import Curso.Curs;
+import Estudiant.Estudiant;
 import java.util.Collections;
 import java.util.Comparator;
  
@@ -58,7 +59,6 @@ public class ListaAsignaturas implements Interficie_lista{
     public String toString(){
         String s="";
         for(int i=0;i<lista.size();i++){
-//            s+="Nombre "+i+": "+ lista.get(i).getName()+" Codigo: "+lista.get(i).getCodigo()+"\n";
                 s+=lista.get(i).toString()+"\n";
         }
         
@@ -120,6 +120,11 @@ public class ListaAsignaturas implements Interficie_lista{
 
     @Override
     public void deleteasig(Asignatura a) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Estudiant getEstu_Nom(String n) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

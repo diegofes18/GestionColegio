@@ -47,8 +47,15 @@ public class Optativa extends Asignatura {
 
     @Override
     public String toString() {
+        if(listaalumn.size()==0){
+            return ("ASIGNATURA OPTATIVA\n"
+                +"Nombre: "+ name + ", Codigo: "+ codigo + ", Perfil "+ p+
+                    "\n ESTUDIANTES:\n No hi ha estudiants matriculats\n");
+        }else{
         return ("ASIGNATURA OPTATIVA\n"
-                +"Nombre: "+ name + ", Codigo: "+ codigo + ", Perfil "+ p); //To change body of generated methods, choose Tools | Templates.
+                +"Nombre: "+ name + ", Codigo: "+ codigo + ", Perfil "+ p+
+                "\n ESTUDIANTES:\n"+listaalumn.Mostrar_Lista()+"\n"); //To change body of generated methods, choose Tools | Templates.
+    }
     }
     
     @Override

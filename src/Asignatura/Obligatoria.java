@@ -51,8 +51,16 @@ public class Obligatoria extends Asignatura{
 
     @Override
     public String toString() {
+        if(listaalumn.size()==0){
+            return ("ASIGNATURA OBLIGATORIA\n"
+                +"Nombre: "+ name + ", Codigo: "+ codigo + ", Creditos "+ creditos+
+                    "\n ESTUDIANTES:\n No hi ha estudiants matriculats\n");
+        }else{
         return ("ASIGNATURA OBLIGATORIA\n"
-                +"Nombre: "+ name + ", Codigo: "+ codigo + ", Creditos "+ creditos);    }
+                +"Nombre: "+ name + ", Codigo: "+ codigo + ", Creditos "+ creditos+"\n ESTUDIANTES:\n"
+                +listaalumn.Mostrar_Lista()+"\n");    
+        }
+    }
 
     @Override
     public Asignatura_Estudiant getAsignatura_Estudiant() {

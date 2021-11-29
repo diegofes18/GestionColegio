@@ -126,6 +126,11 @@ public class  FP extends Curs {
     public void addasig(Object x) {
         asig.addObject(x); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public ListaAsignaturas getlista(){
+        return asig;
+    }
     
 
     

@@ -4,6 +4,7 @@ package Listas;
 
 import Asignatura.Asignatura;
 import Curso.Curs;
+import Estudiant.Estudiant;
 
 /**
  *
@@ -41,5 +42,7 @@ public interface Interficie_lista {
     public void actualiza(Object x,Object y);
     
     public Curs getCurs_Nom(String n);
+    
+    public Estudiant getEstu_Nom(String n);
     
 }

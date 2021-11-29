@@ -192,7 +192,6 @@ public class AltaCurso extends JDialog implements ActionListener{
                 }
                 cerrarVentana();
                 listaasig.ordena();
-                System.out.println("\n"+listaasig.toString());
                
             }
         });

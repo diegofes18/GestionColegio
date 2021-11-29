@@ -19,9 +19,9 @@ public abstract class Curs {
         this.codi=codi;
         this.nom=nom;
     }
-    public ListaAsignaturas getlista(){
-        return asig;
-    }
+    
+    public abstract ListaAsignaturas getlista();
+    
     public abstract boolean compare(Curs c);
     @Override
     public abstract String toString();

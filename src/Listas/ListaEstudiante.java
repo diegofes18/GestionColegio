@@ -61,7 +61,9 @@ public class ListaEstudiante implements Interficie_lista {
 
     @Override
     public String getInfoName(int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String info;
+        info=lista.get(i).getNom();
+        return info;
     }
 
     @Override
@@ -87,6 +89,16 @@ public class ListaEstudiante implements Interficie_lista {
     }
     public void addestu(Estudiant x){
         lista.add(x);
+    }
+    
+    public Estudiant getEstu_Nom(String n){
+        Estudiant e=null;
+        for(int i =0;i<lista.size();i++){
+            if(lista.get(i).getNom().equals(n)){
+                e=lista.get(i);
+            }
+        }
+        return e;
     }
 
    

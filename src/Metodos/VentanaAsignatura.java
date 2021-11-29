@@ -162,10 +162,6 @@ public class VentanaAsignatura extends JDialog {
         
     
     } 
-
-    public boolean acepted(){
-        return acepted;
-    }
     
     
     public void setAsig(Asignatura a){

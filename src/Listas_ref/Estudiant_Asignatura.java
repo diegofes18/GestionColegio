@@ -6,6 +6,7 @@
 package Listas_ref;
 
 import Asignatura.Asignatura;
+import Estudiant.Estudiant;
 
 /**
  *
@@ -53,7 +54,7 @@ public class Estudiant_Asignatura {
             }
         }
         else{
-            return "Llista buida";
+            return null;
 
     }
         return s;
@@ -140,6 +141,37 @@ public class Estudiant_Asignatura {
         } else {
             System.out.println("Llista buida\n");
         }
+    }
+    
+    public  Asignatura  getInfo ( int  i ) {
+        Nodo aux = primer;
+        int j = 0 ;
+        if (aux != null) {
+
+        while ( ! aux.isEmpty () && j < i) {
+            j ++ ;
+            if (aux.Get_Nodo() != null ){
+                aux = aux.Get_Nodo ();
+            }
+        }
+        return (Asignatura)aux.Get_Object();
+          }
+        else {
+            return  null ;
+        }
+
+    }
+public  int  size () {
+        Nodo aux = primer;
+        int t = 0 ;
+        if (aux !=null) {
+            t ++ ;
+         while (aux.Get_Nodo()!= null ) {
+                t ++ ;
+                aux = aux.Get_Nodo();
+         }}
+         return t;
+
     }
     
 }

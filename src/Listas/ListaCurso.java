@@ -140,6 +140,11 @@ public class ListaCurso implements Interficie_lista{
         }
         return c;
     }
+
+    @Override
+    public Estudiant getEstu_Nom(String n) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
     
