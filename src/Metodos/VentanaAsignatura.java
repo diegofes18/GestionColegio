@@ -32,16 +32,11 @@ public class VentanaAsignatura extends JDialog {
     private Asignatura asig;
     private Perfil perfil;
     private JButton boton;
-    private boolean acepted;
-    private AltaCurso ac;
-    private ListaAsignaturas l;
+    
     private Asignatura_Estudiant ase;
     
     public VentanaAsignatura(){
         ase=new Asignatura_Estudiant();
-       
-        
-        acepted=false;
         this.setModal(true);
         initcomponents();
         this.add(combo);
@@ -168,7 +163,6 @@ public class VentanaAsignatura extends JDialog {
         asig =a;
     }
     public Asignatura getAsig(){
-        
         return asig;
     }
     

@@ -26,6 +26,9 @@ public class AltaCurso extends JDialog implements ActionListener{
     private JComboBox combo,combo2;
     private JTextField num_asig,codi,nom;
     private JLabel l1,l2,l3,l4;
+    private JPanel panel;
+    private JTextArea asigtxt;
+    private JScrollPane scroll;
     private Curs curs;
     private String nom1;
     private int codi1;
@@ -40,9 +43,13 @@ public class AltaCurso extends JDialog implements ActionListener{
     public AltaCurso(ListaCurso lc,ListaAsignaturas la){
         l=lc;
         listaasig=new ListaAsignaturas();
+        for(int i=0;i<listaasig.getlength();i++){
+            
+        }
         this.la=la;
         this.setModal(true);
         initcomponents();
+        this.add(panel);
         this.add(combo);
         this.add(num_asig);
         this.add(codi);
@@ -57,6 +64,7 @@ public class AltaCurso extends JDialog implements ActionListener{
         this.setSize(480,520);
         this.setTitle("Donar d'alta curs");
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        
     }
     private void initcomponents(){
         combo = new JComboBox();
@@ -66,6 +74,11 @@ public class AltaCurso extends JDialog implements ActionListener{
         nom = new JTextField();
         introasig=new JButton();
         aceptar=new JButton();
+        panel=new JPanel();
+        asigtxt=new JTextArea(10,15);
+        scroll=new JScrollPane(asigtxt,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        scroll.setVisible(true);
+        panel.add(scroll);
         l1=new JLabel();
         l2=new JLabel();
         l3=new JLabel();
@@ -93,15 +106,16 @@ public class AltaCurso extends JDialog implements ActionListener{
         getContentPane().add(aceptar);
         l2.setBounds(10, 80, 200, 30);
         l1.setBounds(10, 20, 200, 30);
-        num_asig.setBounds(220,80,200,30);
-        combo.setBounds(220,20,200,30);
+        num_asig.setBounds(250,80,200,30);
+        combo.setBounds(250,20,200,30);
         l3.setBounds(10, 140, 200, 30);
         l4.setBounds(10, 200, 300, 30);
-        nom.setBounds(220,140,200,30);
-        codi.setBounds(220,200,200,30);
+        nom.setBounds(250,140,200,30);
+        codi.setBounds(250,200,200,30);
         combo2.setBounds(10,260,200,30);
         introasig.setBounds(10,330,200,30);
-        aceptar.setBounds(85, 410, 300, 40);
+        aceptar.setBounds(85, 430, 300, 40);
+        panel.setBounds(250, 240, 200, 200);
         num_asig.setText("0");
         
         combo.addActionListener(new ActionListener() {//add actionlistner to listen for change
@@ -170,6 +184,7 @@ public class AltaCurso extends JDialog implements ActionListener{
                     vasig.setVisible(true);
                     listaasig.addObject(vasig.getAsig());
                     la.addObject(vasig.getAsig());
+                    asigtxt.setText(listaasig.toString());
                 } 
             }
         });
