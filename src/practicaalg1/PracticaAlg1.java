@@ -231,7 +231,9 @@ public class PracticaAlg1 extends JFrame {
                 if (listacurs.getlength() == 0) {
                     JOptionPane.showMessageDialog(null, "No hay ningun curso dado de alta");
                 } else {
+                    combocurs.removeAllItems();
                     combocurs.setVisible(true);
+                    
                     scrollPane.setVisible(true);
                     //rellenar combo
                     String name;
@@ -254,6 +256,8 @@ public class PracticaAlg1 extends JFrame {
                 if (listaasig.getlength() == 0) {
                     JOptionPane.showMessageDialog(null, "No hay ninguna asignatura dada de alta");
                 } else {
+                 combocurs.removeAllItems();
+
                     combocurs.setVisible(true);
                     scrollPane.setVisible(true);
                     //rellenar combo
@@ -282,6 +286,8 @@ public class PracticaAlg1 extends JFrame {
                 if (listaestudiant.getlength() == 0) {
                     JOptionPane.showMessageDialog(null, "No hay ningun estudiante dado de alta");
                 } else {
+                     combocurs.removeAllItems();
+
                     combocurs.setVisible(true);
                     scrollPane.setVisible(true);
                     //rellenar combo
