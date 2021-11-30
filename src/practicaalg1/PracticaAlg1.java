@@ -142,6 +142,7 @@ public class PracticaAlg1 extends JFrame {
                 + "<h3 style=text-align: center; color: #3f7320;>by Diego Bermejo, Marc Ca&ntilde;ellas y Victor Canelo</p>\n"
                 + "<h3 style=text-align: center; color: #3f7320;>😁</h3>\n"
                 + "<p><br /><strong></strong></p>");
+        this.add(viewer);
         //acciones
         botones[0].addActionListener(new ActionListener() {
             @Override
@@ -163,6 +164,7 @@ public class PracticaAlg1 extends JFrame {
         botones[1].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
+                
                 me = new MatricularEstudiante_1(listaasig, listaasig.getlength());
                 scrollPane.setVisible(false);
                 me.setLocationRelativeTo(PracticaAlg1.this);
@@ -248,10 +250,11 @@ public class PracticaAlg1 extends JFrame {
         botones[4].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                
+                viewer.setVisible(false);
                 if (listacurs.getlength() == 0) {
                     JOptionPane.showMessageDialog(null, "No hay ningun curso dado de alta");
                 } else {
+                    etiquetacurs.setText("Seleccioni Curs");
                     etiquetacurs.setVisible(true);
                     acceptvisu.setVisible(true);
                     acceptasig.setVisible(false);
@@ -273,10 +276,11 @@ public class PracticaAlg1 extends JFrame {
         botones[5].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                
+                viewer.setVisible(false);
                 if (listaasig.getlength() == 0) {
                     JOptionPane.showMessageDialog(null, "No hay ninguna asignatura dada de alta");
                 } else {
+                 etiquetacurs.setText("Seleccioni Asignatura");
                  etiquetacurs.setVisible(true);
                  acceptasig.setVisible(true);
                  acceptestu.setVisible(false);
@@ -299,9 +303,11 @@ public class PracticaAlg1 extends JFrame {
         botones[6].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
+                viewer.setVisible(false);
                 if (listaestudiant.getlength() == 0) {
                     JOptionPane.showMessageDialog(null, "No hay ningun estudiante dado de alta");
                 } else {
+                    etiquetacurs.setText("Seleccioni Estudiant");
                     etiquetacurs.setVisible(true);
                     acceptasig.setVisible(false);
                     acceptestu.setVisible(true);

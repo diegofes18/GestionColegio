@@ -23,7 +23,7 @@ public abstract class Curs {
     public abstract ListaAsignaturas getlista();
     
     public abstract boolean compare(Curs c);
-    @Override
+    
     public abstract String toString();
     
     public abstract String getNom();
