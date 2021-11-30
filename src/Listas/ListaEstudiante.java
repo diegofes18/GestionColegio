@@ -100,6 +100,9 @@ public class ListaEstudiante implements Interficie_lista {
         }
         return e;
     }
+    public Estudiant getEstu(int i){
+        return lista.get(i);
+    }
 
    
 
