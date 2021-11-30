@@ -44,6 +44,7 @@ public class PracticaAlg1 extends JFrame {
     ListaEstudiante listaestudiant;
     ListaAsignaturas listaasig;
     private JPanel panel;
+    private JButton acceptvisu;
     private JComboBox combocurs;
     private JLabel etiquetacurs;
     private JTextArea mostrallista;
@@ -70,10 +71,14 @@ public class PracticaAlg1 extends JFrame {
         listacurs = new ListaCurso();
         combocurs = new JComboBox();
         etiquetacurs = new JLabel("Seleccione un curso");
-        mostrallista = new JTextArea(30,25);
+        mostrallista = new JTextArea(40,45);
         mostrallista.setVisible(false);
-        combocurs.setVisible(false);
-        etiquetacurs.setVisible(false);
+        combocurs.setVisible(true);
+        etiquetacurs.setVisible(true);
+        acceptvisu=new JButton();
+        acceptvisu.setBounds(650,600,200,75);
+        acceptvisu.setText("VISUALIZAR");
+        acceptvisu.setVisible(false);
         panel=new JPanel();
         listaestudiant = new ListaEstudiante();
         listaasig = new ListaAsignaturas();
@@ -85,7 +90,7 @@ public class PracticaAlg1 extends JFrame {
         this.setLocation(0, 0);
         this.add(combocurs);
         this.add(etiquetacurs);
-        
+        this.add(acceptvisu);
         this.add(panel);
         setDefaultCloseOperation(PracticaAlg1.EXIT_ON_CLOSE);
         setSize(1600, 800);
@@ -110,10 +115,10 @@ public class PracticaAlg1 extends JFrame {
             opciones.add(botones[i]);
         }
         
-        combocurs.setBounds(250, 100, 250, 30);
-        etiquetacurs.setBounds(75, 100, 250, 30);
+        combocurs.setBounds(250, 100, 300, 50);
+        etiquetacurs.setBounds(75, 100, 300, 50);
         
-        panel.setBounds(1050,100,800,800);
+        panel.setBounds(800,71,1000,800);
         contenedor.add(opciones, BorderLayout.NORTH);
         JEditorPane viewer = new JEditorPane();
         viewer.setContentType("text/html");
@@ -135,6 +140,7 @@ public class PracticaAlg1 extends JFrame {
                 ac.setLocationRelativeTo(PracticaAlg1.this);
                 combocurs.setVisible(false);
                 etiquetacurs.setVisible(false);
+                acceptvisu.setVisible(false);
                 ac.setVisible(true);
                 listacurs = ac.getlistacurs();
                 listaasig = ac.getLista();
@@ -152,6 +158,7 @@ public class PracticaAlg1 extends JFrame {
                 mostrallista.setVisible(false);
                 combocurs.setVisible(false);
                 etiquetacurs.setVisible(false);
+                acceptvisu.setVisible(false);
                 me.setVisible(true);
                 Asignatura asignatura;
                 Estudiant estu;
@@ -198,6 +205,7 @@ public class PracticaAlg1 extends JFrame {
                 mostrallista.setVisible(false);
                 combocurs.setVisible(false);
                 etiquetacurs.setVisible(false);
+                acceptvisu.setVisible(false);
                 if (listacurs.getlength() == 0) {
                     bc.setVisible(false);
                     bc.MostrarMensaje();
@@ -216,6 +224,7 @@ public class PracticaAlg1 extends JFrame {
                 mostrallista.setVisible(false);
                 combocurs.setVisible(false);
                 etiquetacurs.setVisible(false);
+                acceptvisu.setVisible(false);
                 if (listaasig.getlength() == 0) {
                     bae.setVisible(false);
                     bae.MostrarMensaje();
@@ -228,6 +237,7 @@ public class PracticaAlg1 extends JFrame {
         botones[4].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
+                acceptvisu.setVisible(true);
                 if (listacurs.getlength() == 0) {
                     JOptionPane.showMessageDialog(null, "No hay ningun curso dado de alta");
                 } else {
@@ -253,6 +263,7 @@ public class PracticaAlg1 extends JFrame {
         botones[5].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
+                acceptvisu.setVisible(true);
                 if (listaasig.getlength() == 0) {
                     JOptionPane.showMessageDialog(null, "No hay ninguna asignatura dada de alta");
                 } else {
@@ -283,6 +294,7 @@ public class PracticaAlg1 extends JFrame {
         botones[6].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
+                acceptvisu.setVisible(true);
                 if (listaestudiant.getlength() == 0) {
                     JOptionPane.showMessageDialog(null, "No hay ningun estudiante dado de alta");
                 } else {
