@@ -16,8 +16,6 @@ import Metodos.AltaCurso;
 import Metodos.BajaAsignaturaCurso;
 import Metodos.BajaCurso;
 import Metodos.MatricularEstudiante_1;
-import Metodos.ViewCurs;
-import Metodos.viewasig;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
@@ -74,7 +72,7 @@ public class PracticaAlg1 extends JFrame {
         combocurs = new JComboBox();
         etiquetacurs = new JLabel("Seleccione un curso");
         mostrallista = new JTextArea(40,45);
-        
+        mostrallista.setVisible(false);
         combocurs.setVisible(false);
         etiquetacurs.setVisible(false);
         acceptvisu=new JButton();
@@ -105,7 +103,6 @@ public class PracticaAlg1 extends JFrame {
         this.add(acceptasig);
         this.add(acceptestu);
         this.add(panel);
-        
         setDefaultCloseOperation(PracticaAlg1.EXIT_ON_CLOSE);
         setSize(1600, 800);
         contenedor = getContentPane();
@@ -214,7 +211,7 @@ public class PracticaAlg1 extends JFrame {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 scrollPane.setVisible(false);
-                bc = new BajaCurso(listacurs, listacurs.getlength());
+                bc = new BajaCurso(listacurs, listacurs.getlength(),listaasig,listaestudiant);
                 bc.setLocationRelativeTo(PracticaAlg1.this);
                 mostrallista.setVisible(false);
                 combocurs.setVisible(false);
@@ -251,18 +248,23 @@ public class PracticaAlg1 extends JFrame {
         botones[4].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                acceptvisu.setVisible(true);
+                
                 if (listacurs.getlength() == 0) {
                     JOptionPane.showMessageDialog(null, "No hay ningun curso dado de alta");
                 } else {
-                    ViewCurs vc =new ViewCurs(listacurs);
-                    
+                    etiquetacurs.setVisible(true);
+                    acceptvisu.setVisible(true);
+                    acceptasig.setVisible(false);
+                    acceptestu.setVisible(false);
+                    combocurs.removeAllItems();
+                    combocurs.setVisible(true);
                     scrollPane.setVisible(true);
-                    
-                    
-                    Curs c = vc.getCurs();
-                    mostrallista.setVisible(true);
-                    mostrallista.setText(c.getlista().toString());
+                    //rellenar combo
+                    String name;
+                    for (int i = 0; i < listacurs.getlength(); i++) {
+                        name = listacurs.returnCurs(i).getNom();
+                        combocurs.addItem(name);
+                    }
 
                 }
             }
@@ -271,21 +273,25 @@ public class PracticaAlg1 extends JFrame {
         botones[5].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                panel.setVisible(true);
+                
                 if (listaasig.getlength() == 0) {
                     JOptionPane.showMessageDialog(null, "No hay ninguna asignatura dada de alta");
                 } else {
-                    viewasig va=new viewasig(listacurs,listaasig);
-                    va.setVisible(true);
+                 etiquetacurs.setVisible(true);
+                 acceptasig.setVisible(true);
+                 acceptestu.setVisible(false);
+                 acceptvisu.setVisible(false);
+                 combocurs.removeAllItems();
+
+                    combocurs.setVisible(true);
                     scrollPane.setVisible(true);
-                    Asignatura a = va.getAsig();
-                    mostrallista.setVisible(true);
-                    Curs c=(Curs)listacurs.returnObject(a);
-                    if(a.getAsignatura_Estudiant().size()==0){
-                        viewer.setText("CURSO:\n"+c.toString()+"\n ESTUDIANTES:\n No hay estudiantes matriculados\n");
-                    }else{
-                    viewer.setText("CURSO:\n"+c.toString()+"\n ESTUDIANTES:\n"+a.getAsignatura_Estudiant().Mostrar_Lista()+"\n");
-                }
+                    //rellenar combo
+                    String name;
+                    for (int i = 0; i < listaasig.getlength(); i++) {
+                        name = listaasig.getInfoName(i);
+                        combocurs.addItem(name);
+                    }
+                    
                 }
             }
         });
@@ -293,10 +299,13 @@ public class PracticaAlg1 extends JFrame {
         botones[6].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                acceptvisu.setVisible(true);
                 if (listaestudiant.getlength() == 0) {
                     JOptionPane.showMessageDialog(null, "No hay ningun estudiante dado de alta");
                 } else {
+                    etiquetacurs.setVisible(true);
+                    acceptasig.setVisible(false);
+                    acceptestu.setVisible(true);
+                    acceptvisu.setVisible(false);
                      combocurs.removeAllItems();
 
                     combocurs.setVisible(true);
@@ -307,107 +316,59 @@ public class PracticaAlg1 extends JFrame {
                         name = listaestudiant.getInfoName(i);
                         combocurs.addItem(name);
                     }
-                    etiquetacurs.setVisible(true);
+                }
+
+            }
+        });
+        acceptvisu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                
+                    Curs c = listacurs.returnCurs(combocurs.getSelectedIndex());
+                    mostrallista.setVisible(true);
+                    mostrallista.setText(c.getlista().toString());
+                
+            }
+        });
+        
+        acceptasig.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                
+                    Asignatura a = listaasig.getInfo(combocurs.getSelectedIndex());
+                    mostrallista.setVisible(true);
+                    Curs c=(Curs)listacurs.returnObject(a);
+                    if(a.getAsignatura_Estudiant().size()==0){
+                        mostrallista.setText("CURSO:\n"+c.toString()+"\n ESTUDIANTES:\n No hay estudiantes matriculados\n");
+                    }else{
+                    mostrallista.setText("CURSO:\n"+c.toString()+"\n ESTUDIANTES:\n"+a.getAsignatura_Estudiant().Mostrar_Lista()+"\n");
+                }
+                }
+            
+        });
+        
+        acceptestu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                
                     Estudiant e = listaestudiant.getEstu(combocurs.getSelectedIndex());
                     mostrallista.setVisible(true);
                     if(e.getEstudiant_Asignatura().size()==0){
                         mostrallista.setText("Este estudiante no pertenece a ninguna asignatura");
                     }else{
-                        mostrallista.setText("ASIGNATURAS:\n"+e.getEstudiant_Asignatura().Mostrar_Lista());
+                        String cadena="";
+                        for(int i=0;i<e.getEstudiant_Asignatura().size();i++){
+                            Curs c=(Curs)listacurs.returnObject(e.getEstudiant_Asignatura().getInfo(i));
+                            cadena+="ASIGNATURA:\n"+e.getEstudiant_Asignatura().getInfo(i)+
+                                    "\n CURSO DE LA ASIGNATURA: "+c.getNom();
+                        }
+                        mostrallista.setText(cadena);
+                        
 
                 }
                 }
-
-            }
+            
         });
-//        acceptvisu.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent ae) {
-//                acceptvisu.setVisible(true);
-//                acceptasig.setVisible(false);
-//                acceptestu.setVisible(false);
-//                if (listacurs.getlength() == 0) {
-//                    JOptionPane.showMessageDialog(null, "No hay ningun curso dado de alta");
-//                } else {
-//                    combocurs.removeAllItems();
-//                    combocurs.setVisible(true);
-//                    
-//                    scrollPane.setVisible(true);
-//                    //rellenar combo
-//                    String name;
-//                    for (int i = 0; i < listacurs.getlength(); i++) {
-//                        name = listacurs.returnCurs(i).getNom();
-//                        combocurs.addItem(name);
-//                    }
-//                    etiquetacurs.setVisible(true);
-//                    Curs c = listacurs.returnCurs(combocurs.getSelectedIndex());
-//                    mostrallista.setVisible(true);
-//                    mostrallista.setText(c.getlista().toString());
-//                }
-//            }
-//        });
-//        acceptasig.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent ae) {
-//                acceptvisu.setVisible(false);
-//                acceptasig.setVisible(true);
-//                acceptestu.setVisible(false);
-//                if (listaasig.getlength() == 0) {
-//                    JOptionPane.showMessageDialog(null, "No hay ninguna asignatura dada de alta");
-//                } else {
-//                 combocurs.removeAllItems();
-//
-//                    combocurs.setVisible(true);
-//                    scrollPane.setVisible(true);
-//                    //rellenar combo
-//                    String name;
-//                    for (int i = 0; i < listaasig.getlength(); i++) {
-//                        name = listaasig.getInfoName(i);
-//                        combocurs.addItem(name);
-//                    }
-//                    etiquetacurs.setVisible(true);
-//                    Asignatura a = listaasig.getInfo(combocurs.getSelectedIndex());
-//                    mostrallista.setVisible(true);
-//                    Curs c=(Curs)listacurs.returnObject(a);
-//                    if(a.getAsignatura_Estudiant().size()==0){
-//                        mostrallista.setText("CURSO:\n"+c.toString()+"\n ESTUDIANTES:\n No hay estudiantes matriculados\n");
-//                    }else{
-//                    mostrallista.setText("CURSO:\n"+c.toString()+"\n ESTUDIANTES:\n"+a.getAsignatura_Estudiant().Mostrar_Lista()+"\n");
-//                }
-//                }
-//            }
-//        });
-//        acceptestu.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent ae) {
-//                acceptvisu.setVisible(false);
-//                acceptasig.setVisible(false);
-//                acceptestu.setVisible(true);
-//                if (listaestudiant.getlength() == 0) {
-//                    JOptionPane.showMessageDialog(null, "No hay ningun estudiante dado de alta");
-//                } else {
-//                     combocurs.removeAllItems();
-//
-//                    combocurs.setVisible(true);
-//                    scrollPane.setVisible(true);
-//                    //rellenar combo
-//                    String name;
-//                    for (int i = 0; i < listaestudiant.getlength(); i++) {
-//                        name = listaestudiant.getInfoName(i);
-//                        combocurs.addItem(name);
-//                    }
-//                    etiquetacurs.setVisible(true);
-//                    Estudiant e = listaestudiant.getEstu(combocurs.getSelectedIndex());
-//                    mostrallista.setVisible(true);
-//                    if(e.getEstudiant_Asignatura().size()==0){
-//                        mostrallista.setText("Este estudiante no pertenece a ninguna asignatura");
-//                    }else{
-//                        mostrallista.setText("ASIGNATURAS:\n"+e.getEstudiant_Asignatura().Mostrar_Lista());
-//
-//                }
-//                }
-//            }
-//        });
 
     }
 }
