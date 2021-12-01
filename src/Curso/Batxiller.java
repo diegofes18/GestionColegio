@@ -54,18 +54,6 @@ public class Batxiller extends Curs{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-
-    @Override
-    public boolean compare(Curs c) {
-        if(this.nom==c.getNom()){
-            return true;
-        }else{
-            return false;
-        }
-        
-    }
-
-
     @Override
     public Asignatura search(String d) {
         Asignatura as = null;
@@ -125,4 +113,8 @@ public class Batxiller extends Curs{
     public void addasig(Object x) {
         asig.addObject(x); //To change body of generated methods, choose Tools | Templates.
     }
+
+    
+
+    
 }

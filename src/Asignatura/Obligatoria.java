@@ -20,44 +20,16 @@ public class Obligatoria extends Asignatura{
         super(cod, nombre,ae);
         this.creditos=c;
     }
-    
-    @Override
-    public boolean compare(Asignatura a){
-        if((this.codigo==a.getCodigo())&&(this.name.equals(a.getName()))){
-            return true;
-        }
-        return false;
-    }
-
-    @Override
-    public String getName() {
-        return super.name;
-    }
-
-    @Override
-    public int getCodigo() {
-        return super.codigo;
-    }
-
-    @Override
-    public void setName(String name) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void setCodigo(int codigo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+   
     @Override
     public String toString() {
         if(listaalumn.size()==0){
             return ("ASIGNATURA OBLIGATORIA\n"
-                +"Nombre: "+ name + ", Codigo: "+ codigo + ", Creditos "+ creditos+
+                +"Nombre: "+ nom + ", Codigo: "+ codi + ", Creditos "+ creditos+
                     "\n ESTUDIANTES:\n No hi ha estudiants matriculats\n");
         }else{
         return ("ASIGNATURA OBLIGATORIA\n"
-                +"Nombre: "+ name + ", Codigo: "+ codigo + ", Creditos "+ creditos+"\n ESTUDIANTES:\n"
+                +"Nombre: "+ nom + ", Codigo: "+ codi + ", Creditos "+ creditos+"\n ESTUDIANTES:\n"
                 +listaalumn.Mostrar_Lista()+"\n");    
         }
     }
@@ -80,6 +52,26 @@ public class Obligatoria extends Asignatura{
     @Override
     public void addestu(Estudiant x) {
         this.listaalumn.Add_Nodo(x); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getNom() {
+        return nom; //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int getCodi() {
+        return codi; //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setNom(String name) {
+        nom=name; //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setCodi(int codigo) {
+        codi=codigo; //To change body of generated methods, choose Tools | Templates.
     }
     
 }

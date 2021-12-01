@@ -17,43 +17,36 @@ public class Optativa extends Asignatura {
         this.p=tipus;
     }
     
-    @Override
-    public boolean compare(Asignatura a){
-        if((this.codigo==a.getCodigo())&&(this.name.equals(a.getName()))){
-            return true;
-        }
-        return false;
+     @Override
+    public String getNom() {
+        return nom; //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public String getName() {
-        return super.name;
+    public int getCodi() {
+        return codi; //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public int getCodigo() {
-        return super.codigo;
+    public void setNom(String name) {
+        nom=name; //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void setName(String name) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void setCodi(int codigo) {
+        codi=codigo; //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public void setCodigo(int codigo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     @Override
     public String toString() {
         if(listaalumn.size()==0){
             return ("ASIGNATURA OPTATIVA\n"
-                +"Nombre: "+ name + ", Codigo: "+ codigo + ", Perfil "+ p+
+                +"Nombre: "+ nom + ", Codigo: "+ codi + ", Perfil "+ p+
                     "\n ESTUDIANTES:\n No hi ha estudiants matriculats\n");
         }else{
         return ("ASIGNATURA OPTATIVA\n"
-                +"Nombre: "+ name + ", Codigo: "+ codigo + ", Perfil "+ p+
+                +"Nombre: "+ nom + ", Codigo: "+ codi + ", Perfil "+ p+
                 "\n ESTUDIANTES:\n"+listaalumn.Mostrar_Lista()+"\n"); //To change body of generated methods, choose Tools | Templates.
     }
     }

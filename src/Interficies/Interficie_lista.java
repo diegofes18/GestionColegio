@@ -1,6 +1,6 @@
 
 
-package Listas;
+package Interficies;
 
 import Asignatura.Asignatura;
 import Curso.Curs;

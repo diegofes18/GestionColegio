@@ -4,11 +4,12 @@
 package Curso;
 import Asignatura.Asignatura;
 import Listas.ListaAsignaturas;
+import Interficies.Interficie_Data;
 /**
  *
  * @author victo
  */
-public abstract class Curs {
+public abstract class Curs implements Interficie_Data{
 
     protected ListaAsignaturas asig;
     protected int codi;
@@ -22,16 +23,28 @@ public abstract class Curs {
     
     public abstract ListaAsignaturas getlista();
     
-    public abstract boolean compare(Curs c);
+    @Override
+    public boolean compare(Object x) {
+        Curs curs=(Curs) x;
+        if(this.nom==curs.getNom()){
+            return true;
+        }else{
+            return false;
+        }
+        
+    }
     @Override
     public abstract String toString();
     
+    @Override
     public abstract String getNom();
     
+    @Override
     public abstract int getCodi();
     
+    @Override
     public abstract void setNom(String name);
-    
+    @Override
     public abstract void setCodi(int cod);
     
     public abstract String getNameAsignaturalist(int i);

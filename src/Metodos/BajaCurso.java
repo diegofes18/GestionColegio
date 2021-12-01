@@ -62,9 +62,6 @@ public class BajaCurso extends JDialog implements ActionListener{
         l1.setBounds(10, 20, 200, 30);
         combo.setBounds(220,20,200,30);
         aceptar.setBounds(100, 280, 300, 40);
-        
-        
-        
       
         aceptar.addActionListener(new ActionListener() {//add actionlistner to listen for change
             @Override
@@ -73,6 +70,7 @@ public class BajaCurso extends JDialog implements ActionListener{
                 
                 for(int i=0;i<lc.getCurs_Nom(deleted).getlista().getlength();i++){
                     la.deleteObject(lc.getCurs_Nom(deleted).getAsignaturalist(i));
+                   
                     for(int j=0;j<lc.getCurs_Nom(deleted).getAsignaturalist(i).getAsignatura_Estudiant().size();j++){
                         le.deleteObject(lc.getCurs_Nom(deleted).getAsignaturalist(i).getAsignatura_Estudiant().getInfo(j));
                     }
@@ -83,8 +81,6 @@ public class BajaCurso extends JDialog implements ActionListener{
             }
         });
     }
-    
-    
     
     private void cerrarVentana() {
         this.dispose();
