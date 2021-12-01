@@ -50,7 +50,6 @@ public class Estudiant_Asignatura {
             while(aux.Get_Nodo() != null){
                 aux = aux.Get_Nodo();
                 s+=(aux.Get_Object()).toString();
-                return s;
             }
         }
         else{

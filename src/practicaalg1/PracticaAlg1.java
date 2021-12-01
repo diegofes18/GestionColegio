@@ -211,7 +211,7 @@ public class PracticaAlg1 extends JFrame {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 scrollPane.setVisible(false);
-                bc = new BajaCurso(listacurs, listacurs.getlength());
+                bc = new BajaCurso(listacurs, listacurs.getlength(),listaasig,listaestudiant);
                 bc.setLocationRelativeTo(PracticaAlg1.this);
                 mostrallista.setVisible(false);
                 combocurs.setVisible(false);
@@ -356,7 +356,14 @@ public class PracticaAlg1 extends JFrame {
                     if(e.getEstudiant_Asignatura().size()==0){
                         mostrallista.setText("Este estudiante no pertenece a ninguna asignatura");
                     }else{
-                        mostrallista.setText("ASIGNATURAS:\n"+e.getEstudiant_Asignatura().Mostrar_Lista());
+                        String cadena="";
+                        for(int i=0;i<e.getEstudiant_Asignatura().size();i++){
+                            Curs c=(Curs)listacurs.returnObject(e.getEstudiant_Asignatura().getInfo(i));
+                            cadena+="ASIGNATURA:\n"+e.getEstudiant_Asignatura().getInfo(i)+
+                                    "\n CURSO DE LA ASIGNATURA: "+c.getNom();
+                        }
+                        mostrallista.setText(cadena);
+                        
 
                 }
                 }

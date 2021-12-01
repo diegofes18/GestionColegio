@@ -5,7 +5,11 @@
  */
 package Metodos;
 
+import Asignatura.Asignatura;
+import Estudiant.Estudiant;
+import Listas.ListaAsignaturas;
 import Listas.ListaCurso;
+import Listas.ListaEstudiante;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -25,10 +29,14 @@ public class BajaCurso extends JDialog implements ActionListener{
     private JLabel l1;
     private JButton aceptar;
     private ListaCurso lc;
+    private ListaAsignaturas la;
+    private ListaEstudiante le;
     private int numCursos;
     
-    public BajaCurso(ListaCurso listac,int i){
+    public BajaCurso(ListaCurso listac,int i,ListaAsignaturas listaasig,ListaEstudiante listaestu){
         this.lc=listac;
+        this.la=listaasig;
+        this.le=listaestu;
         this.numCursos=i;
         initcomponents();
         rellenarCombo(combo);
@@ -62,8 +70,14 @@ public class BajaCurso extends JDialog implements ActionListener{
             @Override
             public void actionPerformed(ActionEvent e) {
                 String deleted=combo.getSelectedItem().toString();
+                
+                for(int i=0;i<lc.getCurs_Nom(deleted).getlista().getlength();i++){
+                    la.deleteObject(lc.getCurs_Nom(deleted).getAsignaturalist(i));
+                    for(int j=0;j<lc.getCurs_Nom(deleted).getAsignaturalist(i).getAsignatura_Estudiant().size();j++){
+                        le.deleteObject(lc.getCurs_Nom(deleted).getAsignaturalist(i).getAsignatura_Estudiant().getInfo(j));
+                    }
+                }
                 lc.deleteObject(lc.getCurs_Nom(deleted));
-                System.out.println("CURSO DADO DE BAJA: "+deleted);
                 cerrarVentana();
                
             }
