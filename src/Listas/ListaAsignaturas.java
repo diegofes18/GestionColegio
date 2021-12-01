@@ -4,6 +4,7 @@
  */
 package Listas;
 
+import Interficies.Interficie_lista;
 import java.util.ArrayList;
 import Asignatura.Asignatura;
 import Curso.Curs;
@@ -45,8 +46,8 @@ public class ListaAsignaturas implements Interficie_lista{
             @Override
             public int compare(Object a, Object b) {
                 
-                return ((Asignatura)a).getName()
-                        .compareTo(((Asignatura)b).getName());
+                return ((Asignatura)a).getNom()
+                        .compareTo(((Asignatura)b).getNom());
             }
         });
     }
@@ -78,7 +79,7 @@ public class ListaAsignaturas implements Interficie_lista{
     @Override
     public String getInfoName(int i){
         String info;
-        info=lista.get(i).getName();
+        info=lista.get(i).getNom();
         return info;
     }
 
@@ -111,17 +112,14 @@ public class ListaAsignaturas implements Interficie_lista{
     public Asignatura getAsig_Nom(String n){
         Asignatura c=null;
         for(int i =0;i<lista.size();i++){
-            if(lista.get(i).getName().equals(n)){
+            if(lista.get(i).getNom().equals(n)){
                 c=lista.get(i);
             }
         }
         return c;
     }
 
-    @Override
-    public void deleteasig(Asignatura a) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
 
     @Override
     public Estudiant getEstu_Nom(String n) {

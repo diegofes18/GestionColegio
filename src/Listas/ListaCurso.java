@@ -2,6 +2,7 @@
 
 package Listas;
 
+import Interficies.Interficie_lista;
 import Asignatura.Asignatura;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -120,7 +121,7 @@ public class ListaCurso implements Interficie_lista{
         Asignatura a=(Asignatura) x;
          for(int i=0;i<lista.size();i++){
              for(int j=0;j<lista.get(i).asigsize();j++){
-                 if(lista.get(i).getAsignaturalist(j).getName().equals(a.getName())){
+                 if(lista.get(i).getAsignaturalist(j).getNom().equals(a.getNom())){
                      lista.get(i).getAsignaturalist(j).addestu((Estudiant)y);
                  }
              }

@@ -1,7 +1,6 @@
 
 package Asignatura;
 
-import Estudiant.Estudiant;
 import Listas_ref.Asignatura_Estudiant;
 
 /**
@@ -17,65 +16,21 @@ public class Optativa extends Asignatura {
         this.p=tipus;
     }
     
-    @Override
-    public boolean compare(Asignatura a){
-        if((this.codigo==a.getCodigo())&&(this.name.equals(a.getName()))){
-            return true;
-        }
-        return false;
-    }
-
-    @Override
-    public String getName() {
-        return super.name;
-    }
-
-    @Override
-    public int getCodigo() {
-        return super.codigo;
-    }
-
-    @Override
-    public void setName(String name) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void setCodigo(int codigo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+    
     @Override
     public String toString() {
-        if(listaalumn.size()==0){
+        if(lista.size()==0){
             return ("ASIGNATURA OPTATIVA\n"
-                +"Nombre: "+ name + ", Codigo: "+ codigo + ", Perfil "+ p+
+                +"Nombre: "+ nom + ", Codigo: "+ codi + ", Perfil "+ p+
                     "\n ESTUDIANTES:\n No hi ha estudiants matriculats\n");
         }else{
         return ("ASIGNATURA OPTATIVA\n"
-                +"Nombre: "+ name + ", Codigo: "+ codigo + ", Perfil "+ p+
-                "\n ESTUDIANTES:\n"+listaalumn.Mostrar_Lista()+"\n"); //To change body of generated methods, choose Tools | Templates.
+                +"Nombre: "+ nom + ", Codigo: "+ codi + ", Perfil "+ p+
+                "\n ESTUDIANTES:\n"+lista.Mostrar_Lista()+"\n"); //To change body of generated methods, choose Tools | Templates.
     }
     }
-    
-    @Override
-    public Asignatura_Estudiant getAsignatura_Estudiant() {
-        return listaalumn;
-    }
+  
 
-    @Override
-    public boolean estupertenece(Estudiant x) {
-        for(int i=0;i<listaalumn.size();i++){
-            if(listaalumn.getInfo(i).compare(x)){
-                return true;
-            }
-        }
-        return false;//To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void addestu(Estudiant x) {
-        listaalumn.Add_Nodo(x); //To change body of generated methods, choose Tools | Templates.
-    }
+   
     
 }

@@ -178,7 +178,7 @@ public class PracticaAlg1 extends JFrame {
 
                 if (listaestudiant.perteneceObj(me.getestu())) {
                     asignatura = listacurs.search(me.getStringasig());
-                    estu = asignatura.getAsignatura_Estudiant().getEstudiant(me.getestu().getDNI());
+                    estu = asignatura.gelista().getEstudiant(me.getestu().getDNI());
                     estu.addasig(asignatura);
                     asignatura.addestu(estu);
                     listacurs.actualiza(asignatura, estu);
@@ -344,10 +344,10 @@ public class PracticaAlg1 extends JFrame {
                     Asignatura a = listaasig.getInfo(combocurs.getSelectedIndex());
                     mostrallista.setVisible(true);
                     Curs c=(Curs)listacurs.returnObject(a);
-                    if(a.getAsignatura_Estudiant().size()==0){
+                    if(a.gelista().size()==0){
                         mostrallista.setText("CURSO:\n"+c.toString()+"\n ESTUDIANTES:\n No hay estudiantes matriculados\n");
                     }else{
-                    mostrallista.setText("CURSO:\n"+c.toString()+"\n ESTUDIANTES:\n"+a.getAsignatura_Estudiant().Mostrar_Lista()+"\n");
+                    mostrallista.setText("CURSO:\n"+c.toString()+"\n ESTUDIANTES:\n"+a.gelista().Mostrar_Lista()+"\n");
                 }
                 }
             

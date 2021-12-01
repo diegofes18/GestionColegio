@@ -97,7 +97,7 @@ public class BajaAsignaturaCurso extends JDialog implements ActionListener{
                 todelete=la.getAsig_Nom(deleted);
                 lc.deleteasig(la.getAsig_Nom(deleted));
                 la.deleteObject(la.getAsig_Nom(deleted));
-                for(int i=0;i<todelete.getAsignatura_Estudiant().size();i++){
+                for(int i=0;i<todelete.gelista().size();i++){
                     le.deleteObject(todelete.geteestu(i));
                 }
                 System.out.println("ASIGNATURA DADA DE BAJA: "+deleted);

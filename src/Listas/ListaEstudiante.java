@@ -2,6 +2,7 @@
 
 package Listas;
 
+import Interficies.Interficie_lista;
 import Asignatura.Asignatura;
 import Curso.Curs;
 import Estudiant.Estudiant;
@@ -121,10 +122,7 @@ public class ListaEstudiante implements Interficie_lista {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public void deleteasig(Asignatura a) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
 
     
     
