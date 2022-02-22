@@ -5,12 +5,13 @@
  */
 package Listas_ref;
 
+import Interficies.Interficie_Data;
 
 /**
  *
  * @author marcc
  */
-public class Nodo {
+public class Nodo implements Interficie_Data{
     
     private Object obj;
     private Nodo seg;
@@ -40,5 +41,28 @@ public class Nodo {
         return obj == null;
     }
 
-    
+    @Override
+    public boolean compare(Object x) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getNom() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int getCodi() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setNom(String name) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setCodi(int cod) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

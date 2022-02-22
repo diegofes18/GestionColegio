@@ -6,7 +6,8 @@
 package Listas_ref;
 
 import Asignatura.Asignatura;
-
+import Curso.Curs;
+import Estudiant.Estudiant;
 import Interficies.Interficie_lista;
 
 /**
@@ -21,6 +22,25 @@ public class Estudiant_Asignatura implements Interficie_lista{
     public  Estudiant_Asignatura() {
         primer =  null;
     }
+   
+    @Override
+    public void addObject(Object a) {
+        Nodo b =  new Nodo ((Asignatura)a, null );
+        
+        if (primer !=  null){
+            Nodo i = primer;
+            
+            while (i.Get_Nodo() != null ){
+                i = i.Get_Nodo();
+            }
+            i.Set_Nodo(b);
+            
+        } else {
+            primer = b;
+           
+        }
+    }
+
 
     @Override
     public int getlength() {
@@ -114,23 +134,6 @@ public class Estudiant_Asignatura implements Interficie_lista{
             }
         } else {
             System.out.println("Llista buida\n");
-        }
-    }
-    @Override
-    public void addObject(Object a) {
-        Nodo b =  new Nodo ((Asignatura)a, null );
-        
-        if (primer !=  null){
-            Nodo i = primer;
-            
-            while (i.Get_Nodo() != null ){
-                i = i.Get_Nodo();
-            }
-            i.Set_Nodo(b);
-            
-        } else {
-            primer = b;
-           
         }
     }
 

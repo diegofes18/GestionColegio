@@ -7,7 +7,8 @@ package Listas;
 import Interficies.Interficie_lista;
 import java.util.ArrayList;
 import Asignatura.Asignatura;
-
+import Curso.Curs;
+import Estudiant.Estudiant;
 import java.util.Collections;
 import java.util.Comparator;
  

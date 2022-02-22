@@ -3,7 +3,8 @@
 package Listas;
 
 import Interficies.Interficie_lista;
-
+import Asignatura.Asignatura;
+import Curso.Curs;
 import Estudiant.Estudiant;
 import java.util.ArrayList;
 import java.util.Collections;

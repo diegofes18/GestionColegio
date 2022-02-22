@@ -23,7 +23,7 @@ public class Estudiant implements Interficie_Data{
     public Estudiant (String n, String dni){
        nom=n;
        DNI=dni;
-       listaasig=new Estudiant_Asignatura(); 
+        
         //Referencia assignatura/estudiant
     }
     @Override
@@ -39,9 +39,6 @@ public class Estudiant implements Interficie_Data{
     public String toString(){
         return ("   Nom: "+this.nom+", DNI: "+this.DNI);
     }
-    public void setListaasig(Estudiant_Asignatura listaasig) {
-        this.listaasig = listaasig;
-    }
     
     public String getDNI(){
         return DNI;
@@ -56,7 +53,9 @@ public class Estudiant implements Interficie_Data{
         return (this.nom.equals(t.getNom()));
     }
 
-    
+    public void setListaasig(Estudiant_Asignatura listaasig) {
+        this.listaasig = listaasig;
+    }
     public void addasig(Asignatura x){
         this.listaasig.addObject(x);
     }

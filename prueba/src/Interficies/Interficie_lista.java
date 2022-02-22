@@ -2,7 +2,9 @@
 
 package Interficies;
 
-
+import Asignatura.Asignatura;
+import Curso.Curs;
+import Estudiant.Estudiant;
 
 /**
  *
@@ -30,6 +32,8 @@ public interface Interficie_lista {
     public String getInfoName(int i);
     
     public Object returnObject(Object x);
+    
+//    public Curs returnCurs(int i);
     
     public void actualiza(Object x,Object y);
     

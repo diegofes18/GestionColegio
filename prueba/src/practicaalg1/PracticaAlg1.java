@@ -40,7 +40,6 @@ import javax.swing.JTextArea;
 public class PracticaAlg1 extends JFrame {
 
     private Container contenedor;
-   
     ListaCurso listacurs;
     ListaEstudiante listaestudiant;
     
